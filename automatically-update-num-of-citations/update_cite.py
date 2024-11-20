@@ -110,11 +110,13 @@ if __name__ == "__main__":
             print(f"index {index}: '{paper_info['Title']}' citation count = {paper_info['CitationCount']}")
             
             for key in paper_info.keys():
-                if key in df.columns:
-                    value = paper_info[key]
-                    if isinstance(value, list):
-                        value = ', '.join(value)
-                    df.at[index, key] = value
+                if key not in df.columns:
+                    df[key] = None
+
+                value = paper_info[key]
+                if isinstance(value, list):
+                    value = ', '.join(value)
+                df.at[index, key] = value
                 
         except Exception as e:
             print(f"Error processing paper '{paper_title}': {str(e)}")
