@@ -11,7 +11,7 @@ This repository support the various research helping tools.
 
 ## automatically-update-num-of-citations
 > [!note]
-> Save all reference lists to CSV file based on paper title (using semanticscholar)
+> Extract and save paper details (title, author, venue, year, citation count, bibtex) using paper titles from CSV file
 
 #### Dependency
 ```bash
@@ -59,7 +59,9 @@ python search.py --id ${paper_id}
 
 ## get-citation-lists
 > [!note]
-> Save papers ordered by citation count.
+> Save all reference lists to CSV file based on paper title (using semanticscholar)
+
+
 
 (reference: https://github.com/WittmannF/sort-google-scholar)
 
@@ -67,7 +69,7 @@ python search.py --id ${paper_id}
 
 ## sort-google-scholar
 > [!note]
-> Extract and save paper details (title, author, venue, year, citation count, bibtex) using paper titles from CSV file
+> Save papers ordered by citation count.
 
 <br>
 
