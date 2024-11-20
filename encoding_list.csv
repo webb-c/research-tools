@@ -1,0 +1,18 @@
+Author ,Title ,Citations ,Year ,Publisher ,Venue ,Source
+
+"L. K. Grover", "Synthesis of quantum superpositions by quantum computation", ,2000, , Phys. Rev. Lett. 85, 
+"G. L. Long and Y. Sun", "Eﬃcient scheme for initializing a quantum register with an arbitrary superposed state", , 2001, , Phys. Rev. A 6
+"V. V. Shende and I. L. Markov", "Quantum circuits for incompletely specified two-qubit operators", , 2005, , Quantum Inf.Comput. 5, 49
+"M. Möttönen, J. J. Vartiainen, V. Bergholm, and M. M.Salomaa", "Transformation of quantum states using uniformly controlled rotations", Quantum Inf. Comput. 5, 467 (2005).
+"M. Plesch and C. Brukner", "Quantum-state preparation with universal gate decompositions, Phys. Rev. A 83, 032302 (2011).
+"X. M. Zhang, M.-H. Yung, and X. Yuan", Low-depth quantum state preparation", Phys. Rev. Res. 3, 043200 (2021).
+"A. N. Soklakov and R. Schack", "Eﬃcient state preparation for a register of quantum bits", Phys. Rev. A 73, 012307 (2006).
+"H. Wang, S. Ashhab, and F. Nori", "Eﬃcient quantum algorithm for preparing molecular-system-like states on a quantum computer", Phys. Rev. A 79, 042335 (2009).
+"D. K. Park, F. Petruccione, and J.-K. K. Rhee", "Circuitbased quantum random access memory for classical data", Sci. Rep. 9, 3949 (2019).
+"S. Ashhab", Quantum state preparation protocol for encoding classical data into the amplitudes of a quantum information processing register’s wave function", Phys. Rev. Res. 4, 013091 (2022).
+"T. Kosugi, S. Daimon, H. Nishi, and Y. Matsushita", "Qubit encoding for a mixture of localized functions", arXiv preprint arXiv:2404.18529.
+"C. Zoufal, A. Lucchi, and S. Woerner", "Quantum generative adversarial networks for learning and loading random distributions", npj Quantum Inf. 5, 103 (2019).
+"K. Nakaji, S. Uno, Y. Suzuki, R. Raymond, T. Onodera, T. Tanaka, H. Tezuka, N. Mitsuda, and N. Yamamoto", "Approximate amplitude encoding in shallow parameterized quantum circuits and its application to financial market indicators", Phys. Rev. Res. 4, 023136 (2022).
+"N. Mitsuda, T. Ichimura, K. Nakaji, Y. Suzuki, T. Tanaka, R. Raymond, H. Tezuka, T. Onodera, and N. Yamamoto", "Approximate complex amplitude encoding algorithm and its application to data classification problems", Phys. Rev. A 109, 052423 (2024).
+"Dilip, R.; Liu, Y.J.; Smith, A.; Pollmann, F.", "Data compression for quantum machine learning.", , 2022, Phys. Rev. Res. 4
+"Tak Hur, Israel F. Arauj, and Daniel K. Park", "Neural quantum embedding: Pushing the limits of quantum supervised learning", , 2024, Phys. Rev. A 110
