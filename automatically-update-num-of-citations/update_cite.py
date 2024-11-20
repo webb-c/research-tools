@@ -29,7 +29,8 @@ def extract_doi(url):
 
 def get_paper_info_by_title(title):
     sch = SemanticScholar()
-    results = sch.search_paper(title, limit=1, fields=['title','year','authors','url','citationStyles', 'externalIds', 'citationCount', 'publicationVenue'])
+    
+    results = sch.search_paper(title, limit=1, fields=['title', 'year', 'authors', 'url','citationStyles', 'externalIds', 'citationCount', 'publicationVenue', 'venue'])
     if normalize_title(results[0].title) != normalize_title(title):
         print(f"title mismatch: {title} != {results[0].title}")
         return 
@@ -39,24 +40,44 @@ def get_paper_info_by_title(title):
     
     
 def make_row_from_info(paper):
+    """
+    paper 객체로부터 필요한 정보를 추출하여 딕셔너리로 반환합니다.
+    존재하지 않는 필드는 None으로 설정됩니다.
+    """
+    authors = None
+    if paper.authors is not None:
+        authors = [item.name for item in paper.authors]
     
-    authors = [item.name for item in paper.authors]
+    venue = None
+    if hasattr(paper, 'publicationVenue') and isinstance(paper.publicationVenue, dict):
+        venue = paper.publicationVenue.get('name', None)
+    if venue is None:
+        venue = getattr(paper, 'venue', None)
+    
+    bibtex = None
+    if hasattr(paper, 'citationStyles') and isinstance(paper.citationStyles, dict):
+        bibtex = paper.citationStyles.get('bibtex', None)
 
+    paper_id = None
+    if hasattr(paper, 'externalIds') and isinstance(paper.externalIds, dict):
+        paper_id = paper.externalIds.get('DOI', None)
+    
     return {
-        'Title': paper.title,
+        'Title': getattr(paper, 'title', None),
         'Authors': authors,
-        'Venue': paper.publicationVenue['name'],
-        'Year': paper.year,
-        'CitationCount': paper.citationCount,
-        'URL': paper.url,
-        'Bibtex': paper.citationStyles["bibtex"],
-        'paperId': paper.externalIds["DOI"],
+        'Venue': venue,
+        'Year': getattr(paper, 'year', None),
+        'CitationCount': getattr(paper, 'citationCount', None),
+        'URL': getattr(paper, 'url', None),
+        'Bibtex': bibtex,
+        'paperId': paper_id,
     }
     
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--input', type=str, default='data/papers.csv')
     parser.add_argument('--output', type=str, default=None)
+    parser.add_argument('--idx', type=int, default=None)
     args = parser.parse_args()
     
     if args.output is None:
@@ -79,6 +100,8 @@ if __name__ == "__main__":
         df['CitationCount'] = None
     
     for index, row in df.iterrows():
+        if args.idx is not None and index < args.idx:
+            continue
         paper_title = row['Title']
     
         try:
@@ -95,6 +118,7 @@ if __name__ == "__main__":
                 
         except Exception as e:
             print(f"Error processing paper '{paper_title}': {str(e)}")
+            exit(1)
 
     if OUTPUT_FILE.endswith('.csv'):
         df.to_csv(OUTPUT_FILE, index=False)
