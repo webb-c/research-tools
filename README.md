@@ -36,7 +36,7 @@ python update_cite.py --input ${csv_file_path}
 
 #### Dependency
 ```bash
-pip install semanticscholar
+pip install semanticscholar, tabulate
 ```
 
 #### Useage
