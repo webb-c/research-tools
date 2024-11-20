@@ -29,7 +29,7 @@ def extract_doi(url):
 
 def get_paper_info_by_title(title):
     sch = SemanticScholar()
-    results = sch.search_paper(title, limit=1, fields=['title','year','authors','url','citationStyles', 'paperId', 'citationCount', 'publicationVenue'])
+    results = sch.search_paper(title, limit=1, fields=['title','year','authors','url','citationStyles', 'externalIds', 'citationCount', 'publicationVenue'])
     if normalize_title(results[0].title) != normalize_title(title):
         print(f"title mismatch: {title} != {results[0].title}")
         return 
@@ -50,7 +50,7 @@ def make_row_from_info(paper):
         'CitationCount': paper.citationCount,
         'URL': paper.url,
         'Bibtex': paper.citationStyles["bibtex"],
-        'paperId': paper.paperId,
+        'paperId': paper.externalIds["DOI"],
     }
     
 if __name__ == "__main__":
@@ -91,8 +91,7 @@ if __name__ == "__main__":
                     value = paper_info[key]
                     if isinstance(value, list):
                         value = ', '.join(value)
-                    if df.at[index, key] is None:
-                        df.at[index, key] = value
+                    df.at[index, key] = value
                 
         except Exception as e:
             print(f"Error processing paper '{paper_title}': {str(e)}")
